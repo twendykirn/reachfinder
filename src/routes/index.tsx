@@ -1,118 +1,406 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
 import {
+  Mail,
+  Phone,
+  Share2,
+  Search,
   Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
+  CheckCircle2,
 } from 'lucide-react'
+import { SignIn, useUser } from '@clerk/tanstack-react-start'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({ component: HomePage })
 
-function App() {
-  const features = [
-    {
-      icon: <Zap className="w-12 h-12 text-cyan-400" />,
-      title: 'Powerful Server Functions',
-      description:
-        'Write server-side code that seamlessly integrates with your client components. Type-safe, secure, and simple.',
-    },
-    {
-      icon: <Server className="w-12 h-12 text-cyan-400" />,
-      title: 'Flexible Server Side Rendering',
-      description:
-        'Full-document SSR, streaming, and progressive enhancement out of the box. Control exactly what renders where.',
-    },
-    {
-      icon: <RouteIcon className="w-12 h-12 text-cyan-400" />,
-      title: 'API Routes',
-      description:
-        'Build type-safe API endpoints alongside your application. No separate backend needed.',
-    },
-    {
-      icon: <Shield className="w-12 h-12 text-cyan-400" />,
-      title: 'Strongly Typed Everything',
-      description:
-        'End-to-end type safety from server to client. Catch errors before they reach production.',
-    },
-    {
-      icon: <Waves className="w-12 h-12 text-cyan-400" />,
-      title: 'Full Streaming Support',
-      description:
-        'Stream data from server to client progressively. Perfect for AI applications and real-time updates.',
-    },
-    {
-      icon: <Sparkles className="w-12 h-12 text-cyan-400" />,
-      title: 'Next Generation Ready',
-      description:
-        'Built from the ground up for modern web applications. Deploy anywhere JavaScript runs.',
-    },
-  ]
+function HomePage() {
+  const [url, setUrl] = useState('')
+  const [showSignIn, setShowSignIn] = useState(false)
+  const { isSignedIn, user } = useUser()
+
+  const handleSubmit = () => {
+    if (isSignedIn) {
+      // Handle the URL submission for crawling
+      console.log('Crawling URL:', url)
+      // TODO: Implement actual crawling logic
+    } else {
+      setShowSignIn(true)
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative py-20 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <img
-              src="/tanstack-circle-logo.png"
-              alt="TanStack Logo"
-              className="w-24 h-24 md:w-32 md:h-32"
-            />
-            <h1 className="text-6xl md:text-7xl font-black text-white [letter-spacing:-0.08em]">
-              <span className="text-gray-300">TANSTACK</span>{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                START
-              </span>
-            </h1>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Search className="h-6 w-6" />
+            <span className="text-xl font-semibold">ReachFinder</span>
           </div>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
-            The framework for next generation AI applications
-          </p>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-            Full-stack framework powered by TanStack Router for React and Solid.
-            Build modern applications with server functions, streaming, and type
-            safety.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://tanstack.com/start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/50"
-            >
-              Documentation
+          <nav className="hidden md:flex items-center gap-6">
+            <a href="#features" className="text-sm hover:underline">
+              Features
             </a>
-            <p className="text-gray-400 text-sm mt-2">
-              Begin your TanStack Start journey by editing{' '}
-              <code className="px-2 py-1 bg-slate-700 rounded text-cyan-400">
-                /src/routes/index.tsx
-              </code>
+            <a href="#pricing" className="text-sm hover:underline">
+              Pricing
+            </a>
+            <a href="#faq" className="text-sm hover:underline">
+              FAQ
+            </a>
+            <Button variant="outline" size="sm" onClick={() => setShowSignIn(true)}>
+              {isSignedIn ? 'Dashboard' : 'Log In'}
+            </Button>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section with Chat Interface */}
+      <section className="container mx-auto px-4 py-20 md:py-32">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Find Contact Information
+            <br />
+            <span className="text-muted-foreground">From Any Website</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Paste a URL and let AI crawl the website to extract emails, phone numbers, and social media links instantly.
+          </p>
+
+          {/* Chat Interface */}
+          <Card className="max-w-2xl mx-auto">
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                <div className="flex gap-2">
+                  <Input
+                    type="url"
+                    placeholder="https://example.com"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    className="flex-1"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSubmit()
+                      }
+                    }}
+                  />
+                  <Button onClick={handleSubmit} size="lg">
+                    Find Contacts
+                  </Button>
+                </div>
+                <p className="text-sm text-muted-foreground text-left">
+                  Enter a website URL to start extracting contact information
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="border-t py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Everything You Need
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Powerful AI-driven contact extraction with simple paste-and-go functionality
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card>
+              <CardHeader>
+                <div className="mb-4 p-3 w-fit rounded-lg bg-primary/10">
+                  <Mail className="h-8 w-8" />
+                </div>
+                <CardTitle>Extract All Emails</CardTitle>
+                <CardDescription>
+                  Automatically discover and extract all email addresses from any website. Our AI scans every page to find contact emails, support addresses, and more.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
+                  <span className="text-muted-foreground text-sm">Email extraction preview</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="mb-4 p-3 w-fit rounded-lg bg-primary/10">
+                  <Phone className="h-8 w-8" />
+                </div>
+                <CardTitle>Find Phone Numbers</CardTitle>
+                <CardDescription>
+                  Detect phone numbers in any format from websites. Whether they're in headers, footers, or contact pages, we'll find them all.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
+                  <span className="text-muted-foreground text-sm">Phone detection preview</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="mb-4 p-3 w-fit rounded-lg bg-primary/10">
+                  <Share2 className="h-8 w-8" />
+                </div>
+                <CardTitle>Social Media Links</CardTitle>
+                <CardDescription>
+                  Gather all social media profiles including Twitter, LinkedIn, Facebook, Instagram, and more. Connect with businesses across all platforms.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
+                  <span className="text-muted-foreground text-sm">Social links preview</span>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
-            >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+      {/* Pricing Section */}
+      <section id="pricing" className="border-t py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Simple Pricing
+            </h2>
+            <p className="text-muted-foreground">
+              One-time purchase. No subscriptions. Credits never expire.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Starter</CardTitle>
+                <CardDescription>Perfect for trying out the service</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <div className="text-4xl font-bold">$5</div>
+                  <div className="text-sm text-muted-foreground">One-time purchase</div>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>50 website scans</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Extract emails, phones & social media</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Export results as CSV</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Credits never expire</span>
+                  </li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full" variant="outline">
+                  Get Started
+                </Button>
+              </CardFooter>
+            </Card>
+
+            <Card className="border-primary">
+              <CardHeader>
+                <CardTitle className="text-2xl">Professional</CardTitle>
+                <CardDescription>Best value for regular users</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <div className="text-4xl font-bold">$15</div>
+                  <div className="text-sm text-muted-foreground">One-time purchase</div>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>200 website scans</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Extract emails, phones & social media</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Export results as CSV</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Credits never expire</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                    <span>Priority processing</span>
+                  </li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className="w-full">
+                  Get Started
+                </Button>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="border-t py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>How does the website crawling work?</AccordionTrigger>
+              <AccordionContent>
+                Our AI-powered crawler visits the website you provide and intelligently scans all accessible pages to find contact information including email addresses, phone numbers, and social media links. The process typically takes just a few seconds.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2">
+              <AccordionTrigger>Do credits expire?</AccordionTrigger>
+              <AccordionContent>
+                No, credits never expire. Once you purchase a package, you can use your credits whenever you need them without any time limits.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3">
+              <AccordionTrigger>What information can I extract?</AccordionTrigger>
+              <AccordionContent>
+                You can extract email addresses, phone numbers in various formats, and social media profile links from platforms like Twitter, LinkedIn, Facebook, Instagram, YouTube, and more.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4">
+              <AccordionTrigger>Is this legal?</AccordionTrigger>
+              <AccordionContent>
+                Yes, our service only extracts publicly available information from websites. However, you should always use the extracted information in compliance with applicable privacy laws and regulations like GDPR and CAN-SPAM Act.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5">
+              <AccordionTrigger>Can I export the results?</AccordionTrigger>
+              <AccordionContent>
+                Yes, all extracted contact information can be exported as a CSV file for easy integration with your CRM or other tools.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Search className="h-5 w-5" />
+                <span className="font-semibold">ReachFinder</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                &copy; 2025 ReachFinder. All rights reserved.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Product</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#features" className="text-muted-foreground hover:underline">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#pricing" className="text-muted-foreground hover:underline">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" className="text-muted-foreground hover:underline">
+                    FAQ
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#" className="text-muted-foreground hover:underline">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:underline">
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:underline">
+                    Cookie Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Contact</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="mailto:support@reachfinder.com" className="text-muted-foreground hover:underline">
+                    support@reachfinder.com
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:underline">
+                    Twitter
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:underline">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Sign In Dialog */}
+      <Dialog open={showSignIn} onOpenChange={setShowSignIn}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Sign in to continue</DialogTitle>
+            <DialogDescription>
+              Sign in to your account to start extracting contact information from websites.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-center py-4">
+            <SignIn />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
