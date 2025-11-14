@@ -1,118 +1,146 @@
-import { createFileRoute } from '@tanstack/react-router'
-import {
-  Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
-} from 'lucide-react'
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { Mail, Phone, Share2, ArrowUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Header } from '@/components/header';
+import { Textarea } from '@/components/ui/textarea';
+import { FeatureCard } from '@/components/feature-card';
+import { FaqsSection } from '@/components/faqs-section';
+import { PricingSection } from '@/components/pricing-section';
+import { Footer } from '@/components/footer';
 
-export const Route = createFileRoute('/')({ component: App })
+const features = [
+    {
+        title: 'Faaast',
+        icon: Mail,
+        description: 'It supports an entire helping developers and innovate.',
+    },
+    {
+        title: 'Powerful',
+        icon: Phone,
+        description: 'It supports an entire helping developers and businesses.',
+    },
+    {
+        title: 'Security',
+        icon: Share2,
+        description: 'It supports an helping developers businesses.',
+    },
+];
 
-function App() {
-  const features = [
-    {
-      icon: <Zap className="w-12 h-12 text-cyan-400" />,
-      title: 'Powerful Server Functions',
-      description:
-        'Write server-side code that seamlessly integrates with your client components. Type-safe, secure, and simple.',
-    },
-    {
-      icon: <Server className="w-12 h-12 text-cyan-400" />,
-      title: 'Flexible Server Side Rendering',
-      description:
-        'Full-document SSR, streaming, and progressive enhancement out of the box. Control exactly what renders where.',
-    },
-    {
-      icon: <RouteIcon className="w-12 h-12 text-cyan-400" />,
-      title: 'API Routes',
-      description:
-        'Build type-safe API endpoints alongside your application. No separate backend needed.',
-    },
-    {
-      icon: <Shield className="w-12 h-12 text-cyan-400" />,
-      title: 'Strongly Typed Everything',
-      description:
-        'End-to-end type safety from server to client. Catch errors before they reach production.',
-    },
-    {
-      icon: <Waves className="w-12 h-12 text-cyan-400" />,
-      title: 'Full Streaming Support',
-      description:
-        'Stream data from server to client progressively. Perfect for AI applications and real-time updates.',
-    },
-    {
-      icon: <Sparkles className="w-12 h-12 text-cyan-400" />,
-      title: 'Next Generation Ready',
-      description:
-        'Built from the ground up for modern web applications. Deploy anywhere JavaScript runs.',
-    },
-  ]
+export const Route = createFileRoute('/')({ component: HomePage });
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative py-20 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <img
-              src="/tanstack-circle-logo.png"
-              alt="TanStack Logo"
-              className="w-24 h-24 md:w-32 md:h-32"
-            />
-            <h1 className="text-6xl md:text-7xl font-black text-white [letter-spacing:-0.08em]">
-              <span className="text-gray-300">TANSTACK</span>{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                START
-              </span>
-            </h1>
-          </div>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
-            The framework for next generation AI applications
-          </p>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-            Full-stack framework powered by TanStack Router for React and Solid.
-            Build modern applications with server functions, streaming, and type
-            safety.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://tanstack.com/start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/50"
-            >
-              Documentation
-            </a>
-            <p className="text-gray-400 text-sm mt-2">
-              Begin your TanStack Start journey by editing{' '}
-              <code className="px-2 py-1 bg-slate-700 rounded text-cyan-400">
-                /src/routes/index.tsx
-              </code>
-            </p>
-          </div>
-        </div>
-      </section>
+function HomePage() {
+    const [showSignIn, setShowSignIn] = useState(false);
 
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
-            >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
+    const [prompt, setPrompt] = useState('');
+
+    const submitPrompt = () => {
+        if (prompt.trim()) {
+            console.log(prompt.trim());
+            setPrompt('');
+        }
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (false) {
+            submitPrompt();
+            // Handle the URL submission for crawling
+            console.log('Crawling URL:');
+            // TODO: Implement actual crawling logic
+        } else {
+            setShowSignIn(true);
+        }
+    };
+
+    const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setPrompt(e.target.value);
+    };
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            submitPrompt();
+        }
+    };
+
+    return (
+        <div className='min-h-screen'>
+            <Header />
+            <section className='container mx-auto px-4 py-20 md:py-32'>
+                <div className='max-w-4xl mx-auto text-center space-y-8'>
+                    <h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
+                        Find Contact Information
+                        <br />
+                        <span className='text-muted-foreground'>From Any Website</span>
+                    </h1>
+                    <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
+                        Paste a URL and let AI crawl the website to extract emails, phone numbers, and social media
+                        links instantly.
+                    </p>
+
+                    <div className='relative z-10 flex flex-col w-full mx-auto max-w-2xl content-center'>
+                        <form
+                            className='overflow-visible rounded-xl border p-2 transition-colors duration-200 focus-within:border-ring'
+                            onSubmit={handleSubmit}>
+                            <Textarea
+                                className='max-h-50 min-h-12 resize-none rounded-none border-none bg-transparent! p-0 text-sm shadow-none focus-visible:border-transparent focus-visible:ring-0'
+                                onChange={handleTextareaChange}
+                                onKeyDown={handleKeyDown}
+                                placeholder='Paste URL'
+                                value={prompt}
+                            />
+
+                            <div className='flex items-center gap-1'>
+                                <div className='ml-auto flex items-center gap-0.5 sm:gap-1'>
+                                    <Button
+                                        className='h-7 w-7 rounded-md'
+                                        disabled={!prompt.trim()}
+                                        size='icon'
+                                        type='submit'
+                                        variant='default'>
+                                        <ArrowUp size={16} />
+                                    </Button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id='features' className='place-content-center mb-20 md:my-86'>
+                <div className='mx-auto w-full max-w-5xl space-y-8 p-4'>
+                    <div className='mx-auto max-w-3xl text-center'>
+                        <h2 className='text-balance font-medium text-2xl md:text-4xl lg:text-5xl'>
+                            Power. Speed. Control.
+                        </h2>
+                        <p className='mt-4 text-balance text-muted-foreground text-sm md:text-base'>
+                            Everything you need to build fast, secure, scalable apps.
+                        </p>
+                    </div>
+
+                    <div className='grid grid-cols-1 divide-x divide-y border-t border-l sm:grid-cols-2 md:grid-cols-3'>
+                        {features.map(feature => (
+                            <FeatureCard
+                                className='last:border-r last:border-b'
+                                feature={feature}
+                                key={feature.title}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id='faq' className='w-full mb-20 md:my-86'>
+                <FaqsSection />
+            </section>
+
+            <div id='pricing' className='relative place-content-center mb-20 md:my-86'>
+                <PricingSection />
             </div>
-          ))}
+
+            <div className='w-full place-content-end pt-10'>
+                <Footer />
+            </div>
         </div>
-      </section>
-    </div>
-  )
+    );
 }
