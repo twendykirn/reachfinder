@@ -4,9 +4,13 @@ import { Logo } from '@/components/logo';
 import { MenuToggleIcon } from '@/components/menu-toggle-icon';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useSession, signOut } from '@/lib/auth-client';
+import { useNavigate } from '@tanstack/react-router';
 
 export function Header() {
     const [open, setOpen] = React.useState(false);
+    const { data: session } = useSession();
+    const navigate = useNavigate();
 
     const links = [
         {
@@ -34,6 +38,23 @@ export function Header() {
         };
     }, [open]);
 
+    const handleSignOut = async () => {
+        await signOut();
+        navigate({ to: '/sign-in' });
+    };
+
+    const handleSignIn = () => {
+        navigate({ to: '/sign-in' });
+    };
+
+    const handleGetStarted = () => {
+        if (session) {
+            navigate({ to: '/dashboard' });
+        } else {
+            navigate({ to: '/sign-up' });
+        }
+    };
+
     return (
         <header className='sticky top-0 z-50 w-full border-transparent border-b border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50'>
             <nav className='mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4'>
@@ -46,8 +67,21 @@ export function Header() {
                             {link.label}
                         </a>
                     ))}
-                    <Button variant='outline'>Sign In</Button>
-                    <Button>Get Started</Button>
+                    {session ? (
+                        <>
+                            <Button variant='outline' onClick={() => navigate({ to: '/dashboard' })}>
+                                Dashboard
+                            </Button>
+                            <Button variant='outline' onClick={handleSignOut}>
+                                Sign Out
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button variant='outline' onClick={handleSignIn}>Sign In</Button>
+                            <Button onClick={handleGetStarted}>Get Started</Button>
+                        </>
+                    )}
                 </div>
                 <Button
                     aria-controls='mobile-menu'
@@ -75,10 +109,23 @@ export function Header() {
                     ))}
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Button className='w-full bg-transparent' variant='outline'>
-                        Sign In
-                    </Button>
-                    <Button className='w-full'>Get Started</Button>
+                    {session ? (
+                        <>
+                            <Button className='w-full bg-transparent' variant='outline' onClick={() => navigate({ to: '/dashboard' })}>
+                                Dashboard
+                            </Button>
+                            <Button className='w-full' variant='outline' onClick={handleSignOut}>
+                                Sign Out
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button className='w-full bg-transparent' variant='outline' onClick={handleSignIn}>
+                                Sign In
+                            </Button>
+                            <Button className='w-full' onClick={handleGetStarted}>Get Started</Button>
+                        </>
+                    )}
                 </div>
             </MobileMenu>
         </header>

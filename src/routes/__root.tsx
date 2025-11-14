@@ -10,6 +10,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary';
 import { NotFound } from '@/components/NotFound';
+import { ConvexBetterAuthProvider } from '@convex-dev/better-auth/react';
+import { authClient } from '@/lib/auth-client';
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -51,9 +53,14 @@ function RootComponent() {
     const context = useRouteContext({ from: Route.id });
     return (
         <ConvexProvider client={context.convexClient}>
-            <RootDocument>
-                <Outlet />
-            </RootDocument>
+            <ConvexBetterAuthProvider
+                client={context.convexClient}
+                authClient={authClient}
+            >
+                <RootDocument>
+                    <Outlet />
+                </RootDocument>
+            </ConvexBetterAuthProvider>
         </ConvexProvider>
     );
 }
