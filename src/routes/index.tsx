@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { Mail, Phone, Share2, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Header } from '@/components/header';
+import { Header } from '@/components/Header';
 import { Textarea } from '@/components/ui/textarea';
 import { FeatureCard } from '@/components/feature-card';
 import { FaqsSection } from '@/components/faqs-section';

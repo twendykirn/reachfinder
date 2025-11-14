@@ -1,12 +1,26 @@
-Welcome to your new TanStack app! 
+Welcome to **ReachFinder** - A TanStack Start application with Better Auth & Convex!
 
 # Getting Started
+
+## Authentication Setup 🔐
+
+This application uses **Better Auth** with **Convex** for authentication. Before running the app, you need to configure authentication:
+
+1. **Read the setup guide**: See [AUTH_SETUP.md](./AUTH_SETUP.md) for detailed instructions
+2. **Copy environment variables**: `cp .env.local.example .env.local`
+3. **Start Convex**: `npx convex dev` (in one terminal)
+4. **Start the app**: `pnpm dev` (in another terminal)
+
+For a complete overview of what was implemented, see [IMPLEMENTATION_SUMMARY.md](./IMPLEMENTATION_SUMMARY.md).
+
+## Quick Start
 
 To run this application:
 
 ```bash
-npm install
-npm run start
+pnpm install       # Install dependencies
+npx convex dev     # Start Convex (Terminal 1)
+pnpm dev          # Start dev server (Terminal 2)
 ```
 
 # Building For Production
