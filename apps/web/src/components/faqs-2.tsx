@@ -6,28 +6,28 @@ export default function FAQsTwo() {
     const faqItems = [
         {
             id: 'item-1',
-            question: 'How long does shipping take?',
-            answer: 'Standard shipping takes 3-5 business days, depending on your location. Express shipping options are available at checkout for 1-2 business day delivery.',
+            question: 'What information does Reachfinder extract?',
+            answer: 'Reachfinder crawls websites and extracts emails, phone numbers, Cal.com links, and social media profile links. We only store the contact information found, not the entire website content.',
         },
         {
             id: 'item-2',
-            question: 'What payment methods do you accept?',
-            answer: 'We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For enterprise customers, we also offer invoicing options.',
+            question: 'How does the credit system work?',
+            answer: 'We use a pay-as-you-go credit system with no subscriptions. You can purchase 334 credits for $5 or 800 credits for $12. Credits are deducted based on the number of pages crawled.',
         },
         {
             id: 'item-3',
-            question: 'Can I change or cancel my order?',
-            answer: 'You can modify or cancel your order within 1 hour of placing it. After this window, please contact our customer support team who will assist you with any changes.',
+            question: 'Can I run multiple searches at once?',
+            answer: 'Yes! Reachfinder allows you to run multiple crawling tasks simultaneously. All results appear in real-time in a clean, organized interface.',
         },
         {
             id: 'item-4',
-            question: 'Do you ship internationally?',
-            answer: "Yes, we ship to over 50 countries worldwide. International shipping typically takes 7-14 business days. Additional customs fees may apply depending on your country's import regulations.",
+            question: 'How do page limits affect results?',
+            answer: 'You can adjust the page limit for each crawl. Higher page limits provide more comprehensive results but consume more credits. This gives you control over depth vs. cost.',
         },
         {
             id: 'item-5',
-            question: 'What is your return policy?',
-            answer: 'We offer a 30-day return policy for most items. Products must be in original condition with tags attached. Some specialty items may have different return terms, which will be noted on the product page.',
+            question: 'Is my data secure?',
+            answer: 'Your privacy is our priority. Authentication is handled by Clerk using email OTP or Gmail. Only Clerk stores email addresses - we do not store them in our Convex database. We only retain the contact information extracted from your crawls.',
         },
     ];
 

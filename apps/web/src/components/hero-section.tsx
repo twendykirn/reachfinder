@@ -84,7 +84,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     as='h1'
                                     className='mx-auto mt-8 max-w-4xl text-balance text-5xl max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]'>
-                                    Modern Solutions for Customer Engagement
+                                    Find Contact Information in Seconds
                                 </TextEffect>
                                 <TextEffect
                                     per='line'
@@ -93,8 +93,7 @@ export default function HeroSection() {
                                     delay={0.5}
                                     as='p'
                                     className='mx-auto mt-8 max-w-2xl text-balance text-lg'>
-                                    Highly customizable components for building modern websites and applications that
-                                    look and feel the way you mean it.
+                                    Instantly extract emails, phone numbers, social media links, and Cal.com profiles from any website. Just paste a URL and let Reachfinder do the rest.
                                 </TextEffect>
 
                                 <AnimatedGroup
@@ -115,7 +114,7 @@ export default function HeroSection() {
                                         className='bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5'>
                                         <Button asChild size='lg' className='rounded-xl px-5 text-base'>
                                             <Link to='/sign-up/$'>
-                                                <span className='text-nowrap'>Start Building</span>
+                                                <span className='text-nowrap'>Get Started</span>
                                             </Link>
                                         </Button>
                                     </div>
