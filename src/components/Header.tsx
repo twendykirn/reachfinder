@@ -1,177 +1,117 @@
-import { Link } from '@tanstack/react-router'
+import React from 'react';
+import { createPortal } from 'react-dom';
+import { Logo } from '@/components/logo';
+import { MenuToggleIcon } from '@/components/menu-toggle-icon';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-import { useState } from 'react'
-import {
-  ChevronDown,
-  ChevronRight,
-  Home,
-  Menu,
-  Network,
-  SquareFunction,
-  StickyNote,
-  X,
-} from 'lucide-react'
+export function Header() {
+    const [open, setOpen] = React.useState(false);
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [groupedExpanded, setGroupedExpanded] = useState<
-    Record<string, boolean>
-  >({})
+    const links = [
+        {
+            label: 'Features',
+            href: '#',
+        },
+        {
+            label: 'Pricing',
+            href: '#',
+        },
+        {
+            label: 'About',
+            href: '#',
+        },
+    ];
 
-  return (
-    <>
-      <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
-            <img
-              src="/tanstack-word-logo-white.svg"
-              alt="TanStack Logo"
-              className="h-10"
-            />
-          </Link>
-        </h1>
-      </header>
+    React.useEffect(() => {
+        if (open) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [open]);
 
-      <aside
-        className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Navigation</h2>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-            aria-label="Close menu"
-          >
-            <X size={24} />
-          </button>
-        </div>
+    return (
+        <header className='sticky top-0 z-50 w-full border-transparent border-b border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50'>
+            <nav className='mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4'>
+                <div className='rounded-md p-2 hover:bg-accent'>
+                    <Logo className='h-4' />
+                </div>
+                <div className='hidden items-center gap-2 md:flex'>
+                    {links.map((link, i) => (
+                        <a className={buttonVariants({ variant: 'ghost' })} href={link.href} key={i}>
+                            {link.label}
+                        </a>
+                    ))}
+                    <Button variant='outline'>Sign In</Button>
+                    <Button>Get Started</Button>
+                </div>
+                <Button
+                    aria-controls='mobile-menu'
+                    aria-expanded={open}
+                    aria-label='Toggle menu'
+                    className='md:hidden'
+                    onClick={() => setOpen(!open)}
+                    size='icon'
+                    variant='outline'>
+                    <MenuToggleIcon className='size-5' duration={300} open={open} />
+                </Button>
+            </nav>
+            <MobileMenu className='flex flex-col justify-between gap-2' open={open}>
+                <div className='grid gap-y-2'>
+                    {links.map(link => (
+                        <a
+                            className={buttonVariants({
+                                variant: 'ghost',
+                                className: 'justify-start',
+                            })}
+                            href={link.href}
+                            key={link.label}>
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <Button className='w-full bg-transparent' variant='outline'>
+                        Sign In
+                    </Button>
+                    <Button className='w-full'>Get Started</Button>
+                </div>
+            </MobileMenu>
+        </header>
+    );
+}
 
-        <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Home size={20} />
-            <span className="font-medium">Home</span>
-          </Link>
+type MobileMenuProps = React.ComponentProps<'div'> & {
+    open: boolean;
+};
 
-          {/* Demo Links Start */}
+function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
+    if (!open || typeof window === 'undefined') {
+        return null;
+    }
 
-          <Link
-            to="/demo/start/server-funcs"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <SquareFunction size={20} />
-            <span className="font-medium">Start - Server Functions</span>
-          </Link>
-
-          <Link
-            to="/demo/start/api-request"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-            activeProps={{
-              className:
-                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-            }}
-          >
-            <Network size={20} />
-            <span className="font-medium">Start - API Request</span>
-          </Link>
-
-          <div className="flex flex-row justify-between">
-            <Link
-              to="/demo/start/ssr"
-              onClick={() => setIsOpen(false)}
-              className="flex-1 flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-              activeProps={{
-                className:
-                  'flex-1 flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-              }}
-            >
-              <StickyNote size={20} />
-              <span className="font-medium">Start - SSR Demos</span>
-            </Link>
-            <button
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              onClick={() =>
-                setGroupedExpanded((prev) => ({
-                  ...prev,
-                  StartSSRDemo: !prev.StartSSRDemo,
-                }))
-              }
-            >
-              {groupedExpanded.StartSSRDemo ? (
-                <ChevronDown size={20} />
-              ) : (
-                <ChevronRight size={20} />
-              )}
-            </button>
-          </div>
-          {groupedExpanded.StartSSRDemo && (
-            <div className="flex flex-col ml-4">
-              <Link
-                to="/demo/start/ssr/spa-mode"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">SPA Mode</span>
-              </Link>
-
-              <Link
-                to="/demo/start/ssr/full-ssr"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">Full SSR</span>
-              </Link>
-
-              <Link
-                to="/demo/start/ssr/data-only"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">Data Only</span>
-              </Link>
+    return createPortal(
+        <div
+            className={cn(
+                'bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50',
+                'fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y md:hidden'
+            )}
+            id='mobile-menu'>
+            <div
+                className={cn(
+                    'data-[slot=open]:zoom-in-97 ease-out data-[slot=open]:animate-in',
+                    'size-full p-4',
+                    className
+                )}
+                data-slot={open ? 'open' : 'closed'}
+                {...props}>
+                {children}
             </div>
-          )}
-
-          {/* Demo Links End */}
-        </nav>
-      </aside>
-    </>
-  )
+        </div>,
+        document.body
+    );
 }

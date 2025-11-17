@@ -3,25 +3,13 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { QueryClient } from '@tanstack/react-query';
 
-import Header from '../components/Header';
-
 import appCss from '../styles.css?url';
-import { createServerFn } from '@tanstack/react-start';
-import { auth } from '@clerk/tanstack-react-start/server';
-import { ClerkProvider, useAuth } from '@clerk/tanstack-react-start';
-import { ConvexReactClient } from 'convex/react';
+import { ConvexProvider, ConvexReactClient } from 'convex/react';
 import { ConvexQueryClient } from '@convex-dev/react-query';
-import { ConvexProviderWithClerk } from 'convex/react-clerk';
-
-const fetchClerkAuth = createServerFn({ method: 'GET' }).handler(async () => {
-    const { getToken, userId } = await auth();
-    const token = await getToken({ template: 'convex' });
-
-    return {
-        userId,
-        token,
-    };
-});
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
+import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary';
+import { NotFound } from '@/components/NotFound';
 
 export const Route = createRootRouteWithContext<{
     queryClient: QueryClient;
@@ -48,34 +36,25 @@ export const Route = createRootRouteWithContext<{
             },
         ],
     }),
-    beforeLoad: async ctx => {
-        const auth = await fetchClerkAuth();
-        const { userId, token } = auth;
-
-        // During SSR only (the only time serverHttpClient exists),
-        // set the Clerk auth token to make HTTP queries with.
-        if (token) {
-            ctx.context.convexQueryClient.serverHttpClient?.setAuth(token);
-        }
-
-        return {
-            userId,
-            token,
-        };
+    errorComponent: props => {
+        return (
+            <RootDocument>
+                <DefaultCatchBoundary {...props} />
+            </RootDocument>
+        );
     },
-    shellComponent: RootComponent,
+    notFoundComponent: () => <NotFound />,
+    component: RootComponent,
 });
 
 function RootComponent() {
     const context = useRouteContext({ from: Route.id });
     return (
-        <ClerkProvider>
-            <ConvexProviderWithClerk client={context.convexClient} useAuth={useAuth}>
-                <RootDocument>
-                    <Outlet />
-                </RootDocument>
-            </ConvexProviderWithClerk>
-        </ClerkProvider>
+        <ConvexProvider client={context.convexClient}>
+            <RootDocument>
+                <Outlet />
+            </RootDocument>
+        </ConvexProvider>
     );
 }
 
@@ -86,8 +65,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <HeadContent />
             </head>
             <body>
-                <Header />
-                {children}
+                <ThemeProvider>
+                    {children}
+                    <Toaster richColors />
+                </ThemeProvider>
                 <TanStackDevtools
                     config={{
                         position: 'bottom-right',
