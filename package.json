@@ -1,25 +1,25 @@
 {
-  "name": "my-better-t-app",
-  "private": true,
-  "type": "module",
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ],
-    "catalog": {
-      "convex": "^1.27.0",
-      "typescript": "^5.7.2"
-    }
-  },
-  "scripts": {
-    "dev": "bun run --filter '*' dev",
-    "build": "bun run --filter '*' build",
-    "check-types": "bun run --filter '*' check-types",
-    "dev:native": "bun run --filter native dev",
-    "dev:web": "bun run --filter web dev",
-    "dev:server": "bun run --filter @my-better-t-app/backend dev",
-    "dev:setup": "bun run --filter @my-better-t-app/backend dev:setup"
-  },
-  "packageManager": "bun@1.3.2"
+    "name": "reachfinder",
+    "private": true,
+    "type": "module",
+    "workspaces": {
+        "packages": [
+            "apps/*",
+            "packages/*"
+        ],
+        "catalog": {
+            "convex": "^1.27.0",
+            "typescript": "^5.7.2"
+        }
+    },
+    "scripts": {
+        "dev": "bun run --filter '*' dev",
+        "build": "bun run --filter '*' build",
+        "check-types": "bun run --filter '*' check-types",
+        "dev:native": "bun run --filter native dev",
+        "dev:web": "bun run --filter web dev",
+        "dev:server": "bun run --filter @reachfinder/backend dev",
+        "dev:setup": "bun run --filter @reachfinder/backend dev:setup"
+    },
+    "packageManager": "bun@1.3.2"
 }
