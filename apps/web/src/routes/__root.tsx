@@ -35,13 +35,83 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
                 content: 'width=device-width, initial-scale=1',
             },
             {
-                title: 'ReachFinder',
+                title: 'ReachFinder - Find & Connect with Influencers',
+            },
+            {
+                name: 'description',
+                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+            },
+            // Open Graph Tags
+            {
+                property: 'og:type',
+                content: 'website',
+            },
+            {
+                property: 'og:site_name',
+                content: 'ReachFinder',
+            },
+            {
+                property: 'og:title',
+                content: 'ReachFinder - Find & Connect with Influencers',
+            },
+            {
+                property: 'og:description',
+                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+            },
+            {
+                property: 'og:url',
+                content: 'https://reachfinder.dev',
+            },
+            {
+                property: 'og:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                property: 'og:image:width',
+                content: '1200',
+            },
+            {
+                property: 'og:image:height',
+                content: '630',
+            },
+            {
+                property: 'og:image:alt',
+                content: 'ReachFinder - Find & Connect with Influencers',
+            },
+            // Twitter Card Tags
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image',
+            },
+            {
+                name: 'twitter:site',
+                content: '@reachfinder',
+            },
+            {
+                name: 'twitter:title',
+                content: 'ReachFinder - Find & Connect with Influencers',
+            },
+            {
+                name: 'twitter:description',
+                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+            },
+            {
+                name: 'twitter:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'twitter:image:alt',
+                content: 'ReachFinder - Find & Connect with Influencers',
             },
         ],
         links: [
             {
                 rel: 'stylesheet',
                 href: appCss,
+            },
+            {
+                rel: 'canonical',
+                href: 'https://reachfinder.dev',
             },
         ],
     }),

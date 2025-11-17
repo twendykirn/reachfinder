@@ -10,6 +10,57 @@ import { columns } from '@/components/columns';
 
 export const Route = createFileRoute('/_auth/dashboard/')({
     component: RouteComponent,
+    head: () => ({
+        meta: [
+            {
+                title: 'Dashboard - ReachFinder',
+            },
+            {
+                name: 'description',
+                content: 'Manage your influencer discovery campaigns, view crawl results, and track your credits on the ReachFinder dashboard.',
+            },
+            {
+                property: 'og:type',
+                content: 'website',
+            },
+            {
+                property: 'og:title',
+                content: 'Dashboard - ReachFinder',
+            },
+            {
+                property: 'og:description',
+                content: 'Manage your influencer discovery campaigns, view crawl results, and track your credits on the ReachFinder dashboard.',
+            },
+            {
+                property: 'og:url',
+                content: 'https://reachfinder.dev/dashboard',
+            },
+            {
+                property: 'og:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image',
+            },
+            {
+                name: 'twitter:title',
+                content: 'Dashboard - ReachFinder',
+            },
+            {
+                name: 'twitter:description',
+                content: 'Manage your influencer discovery campaigns, view crawl results, and track your credits on the ReachFinder dashboard.',
+            },
+            {
+                name: 'twitter:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'robots',
+                content: 'noindex, nofollow',
+            },
+        ],
+    }),
 });
 
 function RouteComponent() {
