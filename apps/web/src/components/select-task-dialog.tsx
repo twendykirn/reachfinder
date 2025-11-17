@@ -15,6 +15,7 @@ import { EmptyDescription } from './ui/empty';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Eye } from 'lucide-react';
 import { displayCorrectSocialMediaIcon } from './utils';
+import { ScrollArea } from './ui/scroll-area';
 
 interface Props {
     task: Doc<'tasks'>;
@@ -64,82 +65,90 @@ export function SelectTaskDialog({ task }: Props) {
                         <TabsTrigger value='socialMedia'>Social Media</TabsTrigger>
                     </TabsList>
                     <TabsContent value='emails'>
-                        {task.emails?.length ? (
-                            <div className='flex flex-wrap items-center gap-2'>
-                                {task.emails.map(email => (
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <a key={email} target='_blank' href={email}>
-                                                <Button className='max-w-[240px] truncate'>
-                                                    {getEmailButtonLabel(email)}
-                                                </Button>
-                                            </a>
-                                        </TooltipTrigger>
-                                        <TooltipContent>{email}</TooltipContent>
-                                    </Tooltip>
-                                ))}
-                            </div>
-                        ) : (
-                            <EmptyDescription>No emails found</EmptyDescription>
-                        )}
+                        <ScrollArea className='max-h-[450px] overflow-y-auto'>
+                            {task.emails?.length ? (
+                                <div className='flex flex-wrap items-center gap-2'>
+                                    {task.emails.map(email => (
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a key={email} target='_blank' href={email}>
+                                                    <Button className='max-w-[240px] truncate'>
+                                                        {getEmailButtonLabel(email)}
+                                                    </Button>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>{email}</TooltipContent>
+                                        </Tooltip>
+                                    ))}
+                                </div>
+                            ) : (
+                                <EmptyDescription>No emails found</EmptyDescription>
+                            )}
+                        </ScrollArea>
                     </TabsContent>
                     <TabsContent value='phones'>
-                        {task.phoneNumbers?.length ? (
-                            <div className='flex flex-wrap items-center gap-2'>
-                                {task.phoneNumbers.map(phoneNumber => (
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <a key={phoneNumber} target='_blank' href={phoneNumber}>
-                                                <Button className='max-w-[240px] truncate'>
-                                                    {phoneNumber.replace('tel:', '')}
-                                                </Button>
-                                            </a>
-                                        </TooltipTrigger>
-                                        <TooltipContent>{phoneNumber}</TooltipContent>
-                                    </Tooltip>
-                                ))}
-                            </div>
-                        ) : (
-                            <EmptyDescription>No phone numbers found</EmptyDescription>
-                        )}
+                        <ScrollArea className='max-h-[450px] overflow-y-auto'>
+                            {task.phoneNumbers?.length ? (
+                                <div className='flex flex-wrap items-center gap-2'>
+                                    {task.phoneNumbers.map(phoneNumber => (
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a key={phoneNumber} target='_blank' href={phoneNumber}>
+                                                    <Button className='max-w-[240px] truncate'>
+                                                        {phoneNumber.replace('tel:', '')}
+                                                    </Button>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>{phoneNumber}</TooltipContent>
+                                        </Tooltip>
+                                    ))}
+                                </div>
+                            ) : (
+                                <EmptyDescription>No phone numbers found</EmptyDescription>
+                            )}
+                        </ScrollArea>
                     </TabsContent>
                     <TabsContent value='calCom'>
-                        {task.calCom?.length ? (
-                            <div className='flex flex-wrap items-center gap-2'>
-                                {task.calCom.map(link => (
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <a key={link} target='_blank' href={link}>
-                                                <Button className='max-w-[240px] truncate'>
-                                                    {getCalComButtonLabel(link)}
-                                                </Button>
-                                            </a>
-                                        </TooltipTrigger>
-                                        <TooltipContent>{link}</TooltipContent>
-                                    </Tooltip>
-                                ))}
-                            </div>
-                        ) : (
-                            <EmptyDescription>No Cal.com links found</EmptyDescription>
-                        )}
+                        <ScrollArea className='max-h-[450px] overflow-y-auto'>
+                            {task.calCom?.length ? (
+                                <div className='flex flex-wrap items-center gap-2'>
+                                    {task.calCom.map(link => (
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a key={link} target='_blank' href={link}>
+                                                    <Button className='max-w-[240px] truncate'>
+                                                        {getCalComButtonLabel(link)}
+                                                    </Button>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>{link}</TooltipContent>
+                                        </Tooltip>
+                                    ))}
+                                </div>
+                            ) : (
+                                <EmptyDescription>No Cal.com links found</EmptyDescription>
+                            )}
+                        </ScrollArea>
                     </TabsContent>
                     <TabsContent value='socialMedia'>
-                        {task.socialMedia?.length ? (
-                            <div className='flex flex-wrap items-center gap-2'>
-                                {task.socialMedia.map(link => (
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <a key={link} target='_blank' href={link}>
-                                                <Button>{displayCorrectSocialMediaIcon(link)}</Button>
-                                            </a>
-                                        </TooltipTrigger>
-                                        <TooltipContent>{link}</TooltipContent>
-                                    </Tooltip>
-                                ))}
-                            </div>
-                        ) : (
-                            <EmptyDescription>No Social Media found</EmptyDescription>
-                        )}
+                        <ScrollArea className='max-h-[450px] overflow-y-auto'>
+                            {task.socialMedia?.length ? (
+                                <div className='flex flex-wrap items-center gap-2'>
+                                    {task.socialMedia.map(link => (
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a key={link} target='_blank' href={link}>
+                                                    <Button>{displayCorrectSocialMediaIcon(link)}</Button>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>{link}</TooltipContent>
+                                        </Tooltip>
+                                    ))}
+                                </div>
+                            ) : (
+                                <EmptyDescription>No Social Media found</EmptyDescription>
+                            )}
+                        </ScrollArea>
                     </TabsContent>
                 </Tabs>
                 <DialogFooter>
