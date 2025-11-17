@@ -33,7 +33,7 @@ export const createUser = internalMutation({
 
         const userId = await ctx.db.insert('users', {
             externalId: args.userId,
-            balance: 0,
+            balance: 15,
         });
 
         return userId;
