@@ -55,6 +55,15 @@ export const deleteUser = internalMutation({
             return { success: false, message: 'User not found' };
         }
 
+        const tasks = await ctx.db
+            .query('tasks')
+            .withIndex('by_userId_status', q => q.eq('userId', user._id))
+            .collect();
+
+        for (const task of tasks) {
+            await ctx.db.delete(task._id);
+        }
+
         await ctx.db.delete(user._id);
 
         return { success: true };

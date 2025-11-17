@@ -20,8 +20,8 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>1. Agreement to Terms</h2>
                             <p>
                                 By accessing and using Reachfinder, you accept and agree to be bound by the terms and
-                                provision of this agreement. If you do not agree to these Terms of Service, please do not
-                                use our service.
+                                provision of this agreement. If you do not agree to these Terms of Service, please do
+                                not use our service.
                             </p>
                         </section>
 
@@ -38,8 +38,8 @@ function TermsOfServiceComponent() {
                                 <li>Cal.com booking links</li>
                             </ul>
                             <p>
-                                Users submit URLs, and our service crawls the specified websites to find and extract this
-                                information. Results are displayed in real-time through our user interface.
+                                Users submit URLs, and our service crawls the specified websites to find and extract
+                                this information. Results are displayed in real-time through our user interface.
                             </p>
                         </section>
 
@@ -91,14 +91,16 @@ function TermsOfServiceComponent() {
                             <p>You agree to use Reachfinder only for lawful purposes. You must not:</p>
                             <ul className='list-disc pl-6'>
                                 <li>
-                                    Crawl websites that explicitly prohibit automated access in their robots.txt or terms
-                                    of service
+                                    Crawl websites that explicitly prohibit automated access in their robots.txt or
+                                    terms of service
                                 </li>
                                 <li>Use the service for spamming, harassment, or any illegal activities</li>
                                 <li>Attempt to overwhelm or harm our infrastructure or third-party services</li>
                                 <li>Violate any applicable data protection laws, including GDPR and CCPA</li>
                                 <li>Use the extracted contact information for unauthorized marketing purposes</li>
-                                <li>Resell or redistribute the data extracted through our service without permission</li>
+                                <li>
+                                    Resell or redistribute the data extracted through our service without permission
+                                </li>
                                 <li>Attempt to reverse engineer or copy our service</li>
                             </ul>
                         </section>
@@ -107,8 +109,8 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>6. Multiple Concurrent Tasks</h2>
                             <p>
                                 Reachfinder allows you to run multiple crawling tasks simultaneously. While we do not
-                                impose strict limits on concurrent tasks, we reserve the right to throttle or limit usage
-                                that we determine to be excessive or abusive.
+                                impose strict limits on concurrent tasks, we reserve the right to throttle or limit
+                                usage that we determine to be excessive or abusive.
                             </p>
                         </section>
 
@@ -116,8 +118,9 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>7. Data and Results</h2>
                             <h3 className='text-xl font-semibold'>Data Storage</h3>
                             <p>
-                                We store only the contact information extracted from crawls (emails, phone numbers, social
-                                media links, and Cal.com links). We do not store the complete content of crawled websites.
+                                We store only the contact information extracted from crawls (emails, phone numbers,
+                                social media links, and Cal.com links). We do not store the complete content of crawled
+                                websites.
                             </p>
 
                             <h3 className='text-xl font-semibold'>Data Accuracy</h3>
@@ -157,28 +160,28 @@ function TermsOfServiceComponent() {
                         <section>
                             <h2 className='text-2xl font-semibold'>9. Service Availability</h2>
                             <p>
-                                We strive to maintain high availability but do not guarantee uninterrupted service. We may
-                                temporarily suspend service for maintenance, updates, or due to circumstances beyond our
-                                control. We will provide reasonable notice when possible.
+                                We strive to maintain high availability but do not guarantee uninterrupted service. We
+                                may temporarily suspend service for maintenance, updates, or due to circumstances beyond
+                                our control. We will provide reasonable notice when possible.
                             </p>
                         </section>
 
                         <section>
                             <h2 className='text-2xl font-semibold'>10. Intellectual Property</h2>
                             <p>
-                                Reachfinder, including its design, features, and functionality, is owned by Igor Kirnosov
-                                s.p. and protected by international copyright, trademark, and other intellectual property
-                                laws. You may not copy, modify, or distribute any part of our service without explicit
-                                permission.
+                                Reachfinder, including its design, features, and functionality, is owned by Igor
+                                Kirnosov s.p. and protected by international copyright, trademark, and other
+                                intellectual property laws. You may not copy, modify, or distribute any part of our
+                                service without explicit permission.
                             </p>
                         </section>
 
                         <section>
                             <h2 className='text-2xl font-semibold'>11. Limitation of Liability</h2>
                             <p>
-                                To the maximum extent permitted by law, Reachfinder and its operators shall not be liable
-                                for any indirect, incidental, special, consequential, or punitive damages, including but
-                                not limited to:
+                                To the maximum extent permitted by law, Reachfinder and its operators shall not be
+                                liable for any indirect, incidental, special, consequential, or punitive damages,
+                                including but not limited to:
                             </p>
                             <ul className='list-disc pl-6'>
                                 <li>Loss of profits or data</li>
@@ -195,7 +198,8 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>12. Indemnification</h2>
                             <p>
                                 You agree to indemnify and hold harmless Reachfinder, its operators, and affiliates from
-                                any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:
+                                any claims, damages, losses, liabilities, and expenses (including legal fees) arising
+                                from:
                             </p>
                             <ul className='list-disc pl-6'>
                                 <li>Your use of the service</li>
@@ -222,10 +226,10 @@ function TermsOfServiceComponent() {
                         <section>
                             <h2 className='text-2xl font-semibold'>14. Changes to Terms</h2>
                             <p>
-                                We reserve the right to modify these Terms of Service at any time. We will notify users of
-                                any material changes by posting the new terms on this page and updating the "Last updated"
-                                date. Your continued use of the service after such modifications constitutes acceptance of
-                                the updated terms.
+                                We reserve the right to modify these Terms of Service at any time. We will notify users
+                                of any material changes by posting the new terms on this page and updating the "Last
+                                updated" date. Your continued use of the service after such modifications constitutes
+                                acceptance of the updated terms.
                             </p>
                         </section>
 
@@ -233,17 +237,17 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>15. Governing Law</h2>
                             <p>
                                 These Terms of Service shall be governed by and construed in accordance with the laws of
-                                the jurisdiction in which Igor Kirnosov s.p. operates, without regard to its conflict of law
-                                provisions.
+                                the jurisdiction in which Igor Kirnosov s.p. operates, without regard to its conflict of
+                                law provisions.
                             </p>
                         </section>
 
                         <section>
                             <h2 className='text-2xl font-semibold'>16. Dispute Resolution</h2>
                             <p>
-                                Any disputes arising from these terms or your use of Reachfinder shall be resolved through
-                                good faith negotiation. If negotiation fails, disputes may be submitted to binding
-                                arbitration or the courts of the applicable jurisdiction.
+                                Any disputes arising from these terms or your use of Reachfinder shall be resolved
+                                through good faith negotiation. If negotiation fails, disputes may be submitted to
+                                binding arbitration or the courts of the applicable jurisdiction.
                             </p>
                         </section>
 
@@ -251,7 +255,7 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>17. Contact Information</h2>
                             <p>For questions about these Terms of Service, please contact us at:</p>
                             <p>
-                                Email: <a href='mailto:support@reachfinder.com'>support@reachfinder.com</a>
+                                Email: <a href='mailto:support@reachfinder.dev'>support@reachfinder.dev</a>
                             </p>
                         </section>
 
@@ -267,9 +271,9 @@ function TermsOfServiceComponent() {
                         <section>
                             <h2 className='text-2xl font-semibold'>19. Entire Agreement</h2>
                             <p>
-                                These Terms of Service, together with our Privacy Policy, constitute the entire agreement
-                                between you and Reachfinder regarding your use of the service and supersede all prior
-                                agreements and understandings.
+                                These Terms of Service, together with our Privacy Policy, constitute the entire
+                                agreement between you and Reachfinder regarding your use of the service and supersede
+                                all prior agreements and understandings.
                             </p>
                         </section>
                     </div>

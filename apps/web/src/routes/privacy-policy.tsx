@@ -21,7 +21,8 @@ function PrivacyPolicyComponent() {
                             <p>
                                 Welcome to Reachfinder. We are committed to protecting your privacy and ensuring the
                                 security of your personal information. This Privacy Policy explains how we collect, use,
-                                and safeguard your data when you use our website crawling and contact extraction service.
+                                and safeguard your data when you use our website crawling and contact extraction
+                                service.
                             </p>
                         </section>
 
@@ -93,8 +94,8 @@ function PrivacyPolicyComponent() {
                             </ul>
                             <p>
                                 All data is encrypted in transit and at rest. We implement industry-standard security
-                                measures to protect your information from unauthorized access, disclosure, alteration, or
-                                destruction.
+                                measures to protect your information from unauthorized access, disclosure, alteration,
+                                or destruction.
                             </p>
                         </section>
 
@@ -109,8 +110,8 @@ function PrivacyPolicyComponent() {
                                     <strong>Firecrawl:</strong> For website crawling (see Firecrawl's privacy policy)
                                 </li>
                                 <li>
-                                    <strong>Payment processors:</strong> For handling credit purchases (your payment
-                                    information is processed securely and not stored on our servers)
+                                    <strong>Polar:</strong> For handling credit purchases (your payment information is
+                                    processed securely and not stored on our servers)
                                 </li>
                             </ul>
                         </section>
@@ -122,7 +123,6 @@ function PrivacyPolicyComponent() {
                                 <li>Access your personal data stored in our system</li>
                                 <li>Request correction of inaccurate data</li>
                                 <li>Request deletion of your account and associated data</li>
-                                <li>Export your crawling results</li>
                                 <li>Opt out of marketing communications</li>
                             </ul>
                             <p>
@@ -135,8 +135,8 @@ function PrivacyPolicyComponent() {
                             <h2 className='text-2xl font-semibold'>Data Retention</h2>
                             <p>
                                 We retain your crawling results and usage data for as long as your account is active. If
-                                you delete your account, we will remove your data from our systems within 30 days, except
-                                where we are required to retain it for legal or regulatory purposes.
+                                you delete your account, we will remove your data from our systems within 30 days,
+                                except where we are required to retain it for legal or regulatory purposes.
                             </p>
                         </section>
 
@@ -162,7 +162,7 @@ function PrivacyPolicyComponent() {
                             <h2 className='text-2xl font-semibold'>Contact Us</h2>
                             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
                             <p>
-                                Email: <a href='mailto:privacy@reachfinder.com'>privacy@reachfinder.com</a>
+                                Email: <a href='mailto:support@reachfinder.dev'>support@reachfinder.dev</a>
                             </p>
                         </section>
                     </div>
