@@ -4,6 +4,63 @@ import { HeroHeader } from '@/components/header';
 
 export const Route = createFileRoute('/privacy-policy')({
     component: PrivacyPolicyComponent,
+    head: () => ({
+        meta: [
+            {
+                title: 'Privacy Policy - ReachFinder',
+            },
+            {
+                name: 'description',
+                content: 'Learn how ReachFinder collects, uses, and protects your personal information. Read our privacy policy to understand your data rights and our security measures.',
+            },
+            {
+                property: 'og:type',
+                content: 'website',
+            },
+            {
+                property: 'og:title',
+                content: 'Privacy Policy - ReachFinder',
+            },
+            {
+                property: 'og:description',
+                content: 'Learn how ReachFinder collects, uses, and protects your personal information. Read our privacy policy to understand your data rights and our security measures.',
+            },
+            {
+                property: 'og:url',
+                content: 'https://reachfinder.dev/privacy-policy',
+            },
+            {
+                property: 'og:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image',
+            },
+            {
+                name: 'twitter:title',
+                content: 'Privacy Policy - ReachFinder',
+            },
+            {
+                name: 'twitter:description',
+                content: 'Learn how ReachFinder collects, uses, and protects your personal information. Read our privacy policy to understand your data rights and our security measures.',
+            },
+            {
+                name: 'twitter:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'robots',
+                content: 'noindex, follow',
+            },
+        ],
+        links: [
+            {
+                rel: 'canonical',
+                href: 'https://reachfinder.dev/privacy-policy',
+            },
+        ],
+    }),
 });
 
 function PrivacyPolicyComponent() {

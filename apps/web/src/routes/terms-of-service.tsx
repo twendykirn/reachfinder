@@ -4,6 +4,63 @@ import { HeroHeader } from '@/components/header';
 
 export const Route = createFileRoute('/terms-of-service')({
     component: TermsOfServiceComponent,
+    head: () => ({
+        meta: [
+            {
+                title: 'Terms of Service - ReachFinder',
+            },
+            {
+                name: 'description',
+                content: 'Read ReachFinder\'s Terms of Service to understand the rules and guidelines for using our influencer discovery platform. Learn about account registration, credit system, and acceptable use.',
+            },
+            {
+                property: 'og:type',
+                content: 'website',
+            },
+            {
+                property: 'og:title',
+                content: 'Terms of Service - ReachFinder',
+            },
+            {
+                property: 'og:description',
+                content: 'Read ReachFinder\'s Terms of Service to understand the rules and guidelines for using our influencer discovery platform. Learn about account registration, credit system, and acceptable use.',
+            },
+            {
+                property: 'og:url',
+                content: 'https://reachfinder.dev/terms-of-service',
+            },
+            {
+                property: 'og:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image',
+            },
+            {
+                name: 'twitter:title',
+                content: 'Terms of Service - ReachFinder',
+            },
+            {
+                name: 'twitter:description',
+                content: 'Read ReachFinder\'s Terms of Service to understand the rules and guidelines for using our influencer discovery platform. Learn about account registration, credit system, and acceptable use.',
+            },
+            {
+                name: 'twitter:image',
+                content: 'https://reachfinder.dev/og-image.png',
+            },
+            {
+                name: 'robots',
+                content: 'noindex, follow',
+            },
+        ],
+        links: [
+            {
+                rel: 'canonical',
+                href: 'https://reachfinder.dev/terms-of-service',
+            },
+        ],
+    }),
 });
 
 function TermsOfServiceComponent() {

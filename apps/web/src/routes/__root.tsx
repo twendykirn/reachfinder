@@ -35,13 +35,83 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
                 content: 'width=device-width, initial-scale=1',
             },
             {
-                title: 'ReachFinder',
+                title: 'ReachFinder - Find Contact Information from Any Website',
+            },
+            {
+                name: 'description',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
+            },
+            // Open Graph Tags
+            {
+                property: 'og:type',
+                content: 'website',
+            },
+            {
+                property: 'og:site_name',
+                content: 'ReachFinder',
+            },
+            {
+                property: 'og:title',
+                content: 'ReachFinder - Find Contact Information from Any Website',
+            },
+            {
+                property: 'og:description',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
+            },
+            {
+                property: 'og:url',
+                content: 'https://reachfinder.dev',
+            },
+            {
+                property: 'og:image',
+                content: 'https://reachfinder.dev/og.png',
+            },
+            {
+                property: 'og:image:width',
+                content: '1200',
+            },
+            {
+                property: 'og:image:height',
+                content: '630',
+            },
+            {
+                property: 'og:image:alt',
+                content: 'ReachFinder - Find Contact Information from Any Website',
+            },
+            // Twitter Card Tags
+            {
+                name: 'twitter:card',
+                content: 'summary_large_image',
+            },
+            {
+                name: 'twitter:site',
+                content: '@reachfinder',
+            },
+            {
+                name: 'twitter:title',
+                content: 'ReachFinder - Find Contact Information from Any Website',
+            },
+            {
+                name: 'twitter:description',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
+            },
+            {
+                name: 'twitter:image',
+                content: 'https://reachfinder.dev/og.png',
+            },
+            {
+                name: 'twitter:image:alt',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
         ],
         links: [
             {
                 rel: 'stylesheet',
                 href: appCss,
+            },
+            {
+                rel: 'canonical',
+                href: 'https://reachfinder.dev',
             },
         ],
     }),
