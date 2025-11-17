@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Settings2, Sparkles, Zap } from 'lucide-react';
+import { Gauge, Search, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 export default function Features() {
@@ -7,8 +7,8 @@ export default function Features() {
         <section id='features' className='bg-zinc-50 py-16 md:py-32 dark:bg-transparent'>
             <div className='@container mx-auto max-w-5xl px-6'>
                 <div className='text-center'>
-                    <h2 className='text-balance text-4xl font-semibold lg:text-5xl'>Built to cover your needs</h2>
-                    <p className='mt-4'>Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.</p>
+                    <h2 className='text-balance text-4xl font-semibold lg:text-5xl'>Powerful Features</h2>
+                    <p className='mt-4'>Everything you need to find contact information across the web.</p>
                 </div>
                 <div className='@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16'>
                     <Card className='group shadow-zinc-950/5'>
@@ -17,13 +17,12 @@ export default function Features() {
                                 <Zap className='size-6' aria-hidden />
                             </CardDecorator>
 
-                            <h3 className='mt-6 font-medium'>Customizable</h3>
+                            <h3 className='mt-6 font-medium'>Lightning Fast</h3>
                         </CardHeader>
 
                         <CardContent>
                             <p className='text-sm'>
-                                Extensive customization options, allowing you to tailor every aspect to meet your
-                                specific needs.
+                                Get results in real-time. Run multiple tasks simultaneously and see contact information appear instantly as it's discovered.
                             </p>
                         </CardContent>
                     </Card>
@@ -31,16 +30,15 @@ export default function Features() {
                     <Card className='group shadow-zinc-950/5'>
                         <CardHeader className='pb-3'>
                             <CardDecorator>
-                                <Settings2 className='size-6' aria-hidden />
+                                <Search className='size-6' aria-hidden />
                             </CardDecorator>
 
-                            <h3 className='mt-6 font-medium'>You have full control</h3>
+                            <h3 className='mt-6 font-medium'>Comprehensive Crawling</h3>
                         </CardHeader>
 
                         <CardContent>
                             <p className='mt-3 text-sm'>
-                                From design elements to functionality, you have complete control to create a unique and
-                                personalized experience.
+                                Extract emails, phone numbers, social media profiles, and Cal.com links. Control crawl depth with adjustable page limits for better accuracy.
                             </p>
                         </CardContent>
                     </Card>
@@ -48,15 +46,15 @@ export default function Features() {
                     <Card className='group shadow-zinc-950/5'>
                         <CardHeader className='pb-3'>
                             <CardDecorator>
-                                <Sparkles className='size-6' aria-hidden />
+                                <Gauge className='size-6' aria-hidden />
                             </CardDecorator>
 
-                            <h3 className='mt-6 font-medium'>Powered By AI</h3>
+                            <h3 className='mt-6 font-medium'>Pay As You Go</h3>
                         </CardHeader>
 
                         <CardContent>
                             <p className='mt-3 text-sm'>
-                                Elements to functionality, you have complete control to create a unique experience.
+                                No subscriptions, just credits. Buy 334 credits for $5 or 800 credits for $12. Only pay for what you use.
                             </p>
                         </CardContent>
                     </Card>
