@@ -13,6 +13,12 @@
         "typescript": "catalog:"
     },
     "dependencies": {
-        "convex": "catalog:"
+        "@clerk/backend": "^2.22.0",
+        "@convex-dev/workpool": "^0.3.0",
+        "@mendable/firecrawl-js": "^4.5.0",
+        "@polar-sh/sdk": "^0.41.4",
+        "buffer": "^6.0.3",
+        "convex": "catalog:",
+        "svix": "^1.81.0"
     }
 }
