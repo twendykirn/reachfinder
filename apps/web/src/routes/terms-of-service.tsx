@@ -167,7 +167,7 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>10. Intellectual Property</h2>
                             <p>
                                 Reachfinder, including its design, features, and functionality, is owned by Igor Kirnosov
-                                s.p and protected by international copyright, trademark, and other intellectual property
+                                s.p. and protected by international copyright, trademark, and other intellectual property
                                 laws. You may not copy, modify, or distribute any part of our service without explicit
                                 permission.
                             </p>
@@ -233,7 +233,7 @@ function TermsOfServiceComponent() {
                             <h2 className='text-2xl font-semibold'>15. Governing Law</h2>
                             <p>
                                 These Terms of Service shall be governed by and construed in accordance with the laws of
-                                the jurisdiction in which Igor Kirnosov s.p operates, without regard to its conflict of law
+                                the jurisdiction in which Igor Kirnosov s.p. operates, without regard to its conflict of law
                                 provisions.
                             </p>
                         </section>

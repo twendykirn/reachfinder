@@ -100,7 +100,7 @@ export default function FooterSection() {
                 </div>
                 <span className='text-muted-foreground block text-center text-sm'>
                     {' '}
-                    © {new Date().getFullYear()} Igor Kirnosov s.p, All rights reserved
+                    © {new Date().getFullYear()} Igor Kirnosov s.p., All rights reserved
                 </span>
             </div>
         </footer>
