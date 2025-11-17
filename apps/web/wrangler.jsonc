@@ -9,11 +9,24 @@
     },
     "observability": {
         "enabled": true
-    }
-    // "kv_namespaces": [
-    //   {
-    //     "binding": "CACHE",
-    //     "id": "<Your KV ID>",
-    //   },
-    // ],
+    },
+    "routes": [
+        {
+            "pattern": "reachfinder.dev",
+            "zone_name": "reachfinder.dev",
+            "custom_domain": true
+        }
+    ],
+    "vars": {
+        "CLERK_SIGN_IN_URL": "/sign-in",
+        "CLERK_SIGN_UP_URL": "/sign-up",
+        "POLAR_REDIRECT_URL": "https://reachfinder.dev/dashboard",
+        "POLAR_SERVER_ENVIRONMENT": "production",
+        "VITE_CONVEX_URL": "https://confident-greyhound-209.convex.cloud",
+        "VITE_POLAR_HOBBY_CREDITS_PRODUCT_ID": "fb46be65-6dea-4366-9281-428440fbadc4",
+        "VITE_POLAR_STARTER_CREDITS_PRODUCT_ID": "ea2a60e2-23a5-49a6-8360-017e82111c6b",
+        "VITE_CLERK_PUBLISHABLE_KEY": "pk_live_Y2xlcmsucmVhY2hmaW5kZXIuZGV2JA"
+    },
+    "preview_urls": true,
+    "workers_dev": true
 }
