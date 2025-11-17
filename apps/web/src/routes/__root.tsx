@@ -35,11 +35,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
                 content: 'width=device-width, initial-scale=1',
             },
             {
-                title: 'ReachFinder - Find & Connect with Influencers',
+                title: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 name: 'description',
-                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             // Open Graph Tags
             {
@@ -52,11 +52,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
             },
             {
                 property: 'og:title',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 property: 'og:description',
-                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             {
                 property: 'og:url',
@@ -64,7 +64,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
             },
             {
                 property: 'og:image',
-                content: 'https://reachfinder.dev/og-image.png',
+                content: 'https://reachfinder.dev/og.png',
             },
             {
                 property: 'og:image:width',
@@ -76,7 +76,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
             },
             {
                 property: 'og:image:alt',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
             // Twitter Card Tags
             {
@@ -89,19 +89,19 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
             },
             {
                 name: 'twitter:title',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 name: 'twitter:description',
-                content: 'ReachFinder helps you discover and connect with the right influencers for your brand. Find creators, analyze their reach, and grow your business.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             {
                 name: 'twitter:image',
-                content: 'https://reachfinder.dev/og-image.png',
+                content: 'https://reachfinder.dev/og.png',
             },
             {
                 name: 'twitter:image:alt',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
         ],
         links: [

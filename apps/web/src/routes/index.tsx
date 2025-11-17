@@ -10,11 +10,11 @@ export const Route = createFileRoute('/')({
     head: () => ({
         meta: [
             {
-                title: 'ReachFinder - Find & Connect with Influencers',
+                title: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 name: 'description',
-                content: 'Discover and connect with the right influencers for your brand. ReachFinder makes it easy to find creators, analyze their reach, and grow your business with influencer marketing.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             {
                 property: 'og:type',
@@ -22,11 +22,11 @@ export const Route = createFileRoute('/')({
             },
             {
                 property: 'og:title',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 property: 'og:description',
-                content: 'Discover and connect with the right influencers for your brand. ReachFinder makes it easy to find creators, analyze their reach, and grow your business with influencer marketing.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             {
                 property: 'og:url',
@@ -34,7 +34,7 @@ export const Route = createFileRoute('/')({
             },
             {
                 property: 'og:image',
-                content: 'https://reachfinder.dev/og-image.png',
+                content: 'https://reachfinder.dev/og.png',
             },
             {
                 name: 'twitter:card',
@@ -42,15 +42,15 @@ export const Route = createFileRoute('/')({
             },
             {
                 name: 'twitter:title',
-                content: 'ReachFinder - Find & Connect with Influencers',
+                content: 'ReachFinder - Find Contact Information from Any Website',
             },
             {
                 name: 'twitter:description',
-                content: 'Discover and connect with the right influencers for your brand. ReachFinder makes it easy to find creators, analyze their reach, and grow your business with influencer marketing.',
+                content: 'ReachFinder helps you find emails, phone numbers, cal.com links, and social media profiles from any website. Simply paste a URL and discover all available contact information.',
             },
             {
                 name: 'twitter:image',
-                content: 'https://reachfinder.dev/og-image.png',
+                content: 'https://reachfinder.dev/og.png',
             },
         ],
         links: [
